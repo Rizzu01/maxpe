@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { LucideIcon } from 'lucide-react';
-import { ArrowDownRight, ArrowRight, ChevronDown, CircleDollarSign, CreditCard, Gift, LockKeyhole, Menu, MoveUpRight, Smartphone, Zap } from 'lucide-react';
+import { ArrowDownRight, ArrowRight, ArrowUpRight, ChevronDown, CircleDollarSign, CreditCard, Gift, LockKeyhole, Menu, MoveUpRight, Smartphone, Zap } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,7 +101,7 @@ export default function Home() {
   }, { scope: root });
 
   return <main ref={root} className="site-shell">
-    <header className="topbar"><a className="brand" href="#home"><span className="brand-mark">M</span><span>MaxPe</span></a><div className={`nav-menu ${menuOpen ? 'open' : ''}`}><a href="#services" onClick={() => setMenuOpen(false)}>Services</a><a href="#rewards" onClick={() => setMenuOpen(false)}>Rewards</a><a href="#how" onClick={() => setMenuOpen(false)}>How it works</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></div><div className="top-actions"><a className="mini-download" href="#download">Get the app <ArrowUpRightIcon /></a><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu"><Menu size={21} /></button></div></header>
+    <header className="topbar"><a className="brand" href="#home"><span className="brand-mark">M</span><span>MaxPe</span></a><div className={`nav-menu ${menuOpen ? 'open' : ''}`}><a href="#services" onClick={() => setMenuOpen(false)}>Services</a><a href="#rewards" onClick={() => setMenuOpen(false)}>Rewards</a><a href="#how" onClick={() => setMenuOpen(false)}>How it works</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></div><div className="top-actions"><a className="mini-download" href="#download">Get the app <ArrowRight size={15} /></a><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu"><Menu size={21} /></button></div></header>
 
     <section id="home" className="hero-kinetic">
       <div className="hero-grid-bg" />
@@ -128,5 +128,3 @@ export default function Home() {
     <footer className="footer-new"><div><a className="brand" href="#home"><span className="brand-mark">M</span><span>MaxPe</span></a><p>Pay. Earn. Save.</p></div><div className="footer-links"><a href="#services">Services</a><a href="#rewards">Rewards</a><a href="#how">How it works</a><a href="#faq">FAQs</a></div><div className="footer-meta"><span>support@maxpe.in</span><span>+91 7390903230</span><span>© 2026 MaxPe</span></div></footer>
   </main>;
 }
-
-function ArrowUpRightIcon() { return <ArrowRight size={15} />; }
