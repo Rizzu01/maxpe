@@ -4,11 +4,14 @@ import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowDownRight, ArrowRight, ChevronDown, CircleDollarSign, CreditCard, Gift, LockKeyhole, Menu, MoveUpRight, Smartphone, Sparkles, Star, Zap } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import { ArrowDownRight, ArrowRight, ChevronDown, CircleDollarSign, CreditCard, Gift, LockKeyhole, Menu, MoveUpRight, Smartphone, Zap } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const services = [
+type Service = [string, string, string, LucideIcon, string];
+
+const services: Service[] = [
   ['01', 'Mobile', 'Recharge', Smartphone, 'Prepaid + postpaid'],
   ['02', 'Power', 'Bills', Zap, 'Electricity + gas'],
   ['03', 'Travel', 'FASTag', CircleDollarSign, 'Toll-ready payments'],
@@ -37,7 +40,7 @@ function AppScreen({ compact = false }: { compact?: boolean }) {
   </div>;
 }
 
-function ServiceIcon({ Icon }: { Icon: typeof Smartphone }) { return <Icon size={23} strokeWidth={1.7} />; }
+function ServiceIcon({ Icon }: { Icon: LucideIcon }) { return <Icon size={23} strokeWidth={1.7} />; }
 
 export default function Home() {
   const root = useRef<HTMLDivElement>(null);
@@ -108,7 +111,7 @@ export default function Home() {
 
     <section className="signal-band"><div className="marquee-track"><span>RECHARGE</span><i>✦</i><span>EARN CASHBACK</span><i>✦</i><span>PAY BILLS</span><i>✦</i><span>COLLECT MAXPOINTS</span><i>✦</i><span>RECHARGE</span><i>✦</i><span>EARN CASHBACK</span><i>✦</i><span>PAY BILLS</span><i>✦</i><span>COLLECT MAXPOINTS</span><i>✦</i></div></section>
 
-    <section id="services" className="service-stage"><div className="stage-caption"><p>01 / THE MAXPE UNIVERSE</p><h2>Everyday payments,<br /><span>reframed.</span></h2><div className="scroll-hint">SCROLL <span>→</span></div></div><div className="service-track">{services.map(([n, a, b, Icon, copy]) => <article className="service-tile" key={n}><span className="tile-number">{n}</span><div className="tile-icon"><ServiceIcon Icon={Icon as typeof Smartphone} /></div><p>{a}</p><h3>{b}</h3><small>{copy}</small><ArrowUpRight className="tile-arrow" size={19} /></article>)}<div className="service-end"><span>+ MORE</span><strong>Water · Insurance<br />Broadband · Gift cards</strong></div></div></section>
+    <section id="services" className="service-stage"><div className="stage-caption"><p>01 / THE MAXPE UNIVERSE</p><h2>Everyday payments,<br /><span>reframed.</span></h2><div className="scroll-hint">SCROLL <span>→</span></div></div><div className="service-track">{services.map(([n, a, b, Icon, copy]) => <article className="service-tile" key={n}><span className="tile-number">{n}</span><div className="tile-icon"><ServiceIcon Icon={Icon} /></div><p>{a}</p><h3>{b}</h3><small>{copy}</small><ArrowUpRight className="tile-arrow" size={19} /></article>)}<div className="service-end"><span>+ MORE</span><strong>Water · Insurance<br />Broadband · Gift cards</strong></div></div></section>
 
     <section id="rewards" className="reward-lab"><div className="reward-grid"><div className="reward-copy-block"><p className="eyebrow-blue">02 / REWARD ENGINE</p><h2>What if every<br />payment <span>gave back?</span></h2><p>MaxPe turns ordinary recharges and bills into a visible loop of cashback and MaxPoints.</p><div className="reward-bar"><span>VALUE RETURN</span><i><b className="reward-bar-fill" /></i><strong>UP TO 6%*</strong></div></div><div className="reward-number">6<span>%</span></div><div className="reward-orb"><span>₹</span></div><div className="reward-chip chip-a"><small>Electricity</small><b>+ ₹62</b></div><div className="reward-chip chip-b"><small>Recharge</small><b>+ ₹18</b></div><div className="reward-chip chip-c"><small>MaxPoints</small><b>+ 640</b></div></div></section>
 
